@@ -2,9 +2,13 @@
 
 predictionTableUI <- function(id) {
   ns <- NS(id)
-  # We'll just return a DTOutput. 
-  # The parent app can place this in a card/box if desired.
-  DTOutput(ns("predictionsTable"))
+      bs4Card(
+        title = "Sales Prediction Table",
+        status = "white",
+        solidHeader = TRUE,
+        width = 12,
+        DTOutput(ns("predictionsTable"))
+      )
 }
 
 predictionTableServer <- function(id, forecastData) {
@@ -38,8 +42,8 @@ predictionTableServer <- function(id, forecastData) {
           initComplete = JS("
             function(settings, json) {
               $(this.api().table().header()).css({
-                'background-color': '#17a2b8',
-                'color': '#FFFFFF'
+                'background-color': '#FFFFFF',
+                'color': '#000000'
               });
             }
           ")
